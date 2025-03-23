@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sense Organs Quiz Game</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 50px;
+      background-color: #f9f9f9;
+    }
+    button {
+      margin: 10px;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      background-color: #B53389;
+      color: white;
+      border: none;
+      border-radius: 5px;
+    }
+    button:hover {
+      background-color: #C54B8C;
+    }
+    #result {
+      margin-top: 20px;
+      font-size: 18px;
+    }
+    #score {
+      margin-top: 20px;
+      font-size: 20px;
+      font-weight: bold;
+    }
+    .nav-buttons {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="nav-buttons">
+    <button onclick="window.location.href='index.html'">Home</button>
+    <button onclick="window.location.href='senseorgans.html'">Sense Organs</button>
+    <button onclick="window.location.href='healthtips.html'">Health Tips</button>
+    <button onclick="window.location.href='game.html'">Game</button>
+    <button onclick="window.location.href='aboutus.html'">About Us</button>
+  </div>
+
+  <h1>Sense Organs Quiz Game</h1>
+  <p id="question">Loading question...</p>
+  <div id="buttons"></div>
+  <div id="result"></div>
+  <div id="score">Score: 0</div>
+
+  <script>
+    const questions = [
+      { question: 'Which sense organ helps you see?', options: ['Eyes', 'Nose', 'Ears'], answer: 'Eyes' },
+      { question: 'Which organ helps you hear?', options: ['Ears', 'Skin', 'Mouth'], answer: 'Ears' },
+      { question: 'Which organ helps you smell?', options: ['Nose', 'Tongue', 'Eyes'], answer: 'Nose' },
+      { question: 'Which organ helps you taste?', options: ['Tongue', 'Eyes', 'Ears'], answer: 'Tongue' },
+      { question: 'Which organ helps you feel touch?', options: ['Skin', 'Nose', 'Ears'], answer: 'Skin' },
+      { question: 'Which part of the eye controls the amount of light entering it?', options: ['Pupil', 'Iris', 'Lens'], answer: 'Iris' },
+      { question: 'Which part of the ear detects sound vibrations?', options: ['Eardrum', 'Cochlea', 'Auditory Nerve'], answer: 'Cochlea' },
+      { question: 'Which part of the tongue detects sweet tastes?', options: ['Tip', 'Back', 'Sides'], answer: 'Tip' },
+      { question: 'Which part of the nose detects smells?', options: ['Nostrils', 'Olfactory Bulb', 'Nasal Cavity'], answer: 'Olfactory Bulb' },
+      { question: 'What type of receptor in the skin detects temperature?', options: ['Thermoreceptors', 'Mechanoreceptors', 'Nociceptors'], answer: 'Thermoreceptors' },
+      { question: 'What is the largest sense organ of the body?', options: ['Skin', 'Eyes', 'Ears'], answer: 'Skin' },
+      { question: 'Which nerve carries visual information to the brain?', options: ['Optic Nerve', 'Auditory Nerve', 'Olfactory Nerve'], answer: 'Optic Nerve' },
+      { question: 'Which sense organ is responsible for maintaining balance?', options: ['Ears', 'Eyes', 'Skin'], answer: 'Ears' },
+      { question: 'Which part of the ear helps with balance?', options: ['Cochlea', 'Semicircular Canals', 'Eardrum'], answer: 'Semicircular Canals' },
+      { question: 'Which part of the skin is responsible for detecting pressure?', options: ['Merkel Cells', 'Meissner's Corpuscles', 'Pacinian Corpuscles'], answer: 'Pacinian Corpuscles' },
+      { question: 'Which sense organ works with the brain to interpret flavors?', options: ['Tongue', 'Nose', 'Ears'], answer: 'Nose' },
+      { question: 'What protects the eye from dust and debris?', options: ['Eyelashes', 'Cornea', 'Pupil'], answer: 'Eyelashes' },
+      { question: 'What part of the ear amplifies sound vibrations?', options: ['Ossicles', 'Cochlea', 'Eustachian Tube'], answer: 'Ossicles' },
+      { question: 'What is the transparent layer at the front of the eye called?', options: ['Cornea', 'Lens', 'Retina'], answer: 'Cornea' },
+      { question: 'What detects pain in the skin?', options: ['Nociceptors', 'Mechanoreceptors', 'Photoreceptors'], answer: 'Nociceptors' }
+    ];
+
+    let currentQuestionIndex = 0;
+    let score = 0;
+
+    function loadQuestion() {
+      const questionData = questions[currentQuestionIndex];
+      document.getElementById('question').textContent = questionData.question;
+      const buttonsDiv = document.getElementById('buttons');
+      buttonsDiv.innerHTML = '';
+
+      questionData.options.forEach(option => {
+        const button = document.createElement('button');
+        button.textContent = option;
+        button.onclick = () => checkAnswer(option);
+        buttonsDiv.appendChild(button);
+      });
+    }
+
+    function checkAnswer(answer) {
+      const resultDiv = document.getElementById('result');
+      if (answer === questions[currentQuestionIndex].answer) {
+        resultDiv.textContent = 'Correct!';
+        resultDiv.style.color = 'green';
+        score++;
+      } else {
+        resultDiv.textContent = 'Wrong! The correct answer is ' + questions[currentQuestionIndex].answer + '.';
+        resultDiv.style.color = 'red';
+      }
+
+      document.getElementById('score').textContent = 'Score: ' + score;
+      currentQuestionIndex++;
+
+      if (currentQuestionIndex < questions.length) {
+        setTimeout(() => {
+          resultDiv.textContent = '';
+          loadQuestion();
+        }, 1000);
+      } else {
+        setTimeout(() => {
+          resultDiv.textContent = `Game Over! Final Score: ${score}/${questions.length}`;
+          document.getElementById('buttons').innerHTML = '';
+        }, 1000);
+      }
+    }
+
+    loadQuestion();
+  </script>
+</body>
+</html>

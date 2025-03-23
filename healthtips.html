@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Health Tips for Sense Organs</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: url('background1.jpg') no-repeat center center fixed;
+      background-size: cover;
+      background-color: #f9f9f9;
+      text-align: center;
+    }
+    header {
+      background-color: #B53389;
+      padding: 20px;
+      color: white;
+    }
+    p {
+      font-size: 18px;
+      margin: 30px 20px;
+    }
+    .buttons {
+      margin-top: 20px;
+      display: flex;
+      justify-content: center;
+    }
+    button {
+      background-color: #C54B8C;
+      color: Black;
+      border: none;
+      padding: 15px 30px;
+      margin: 10px;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 8px;
+    }
+    button:hover {
+      background-color: #C54B8C;
+    }
+    .top-buttons {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="top-buttons buttons"> 
+    <button onclick="window.location.href='index.html'">Home</button>
+    <button onclick="window.location.href='senseorgans.html'">Sense Organs</button>
+    <button onclick="window.location.href='healthtips.html'">Health Tips</button>
+    <button onclick="window.location.href='game.html'">Game</button>
+    <button onclick="window.location.href='aboutus.html'">About Us</button>
+  </div>  <header>
+    <h1>Health Tips for Taking Care of Your Sense Organs</h1>
+  </header>
+
+  <div class="navbar">
+    <button onclick="showTip('eyes')">Eyes</button>
+    <button onclick="showTip('ears')">Ears</button>
+    <button onclick="showTip('nose')">Nose</button>
+    <button onclick="showTip('skin')">Skin</button>
+    <button onclick="showTip('tongue')">Tongue</button>
+  </div>
+
+  <div class="content" id="tipContent">
+    <h2>Welcome!</h2>
+    <p>Click on any button above to see health tips for that specific sense organ.</p>
+  </div>
+
+  <script>
+    function showTip(organ) {
+      const tips = {
+        eyes: `<p>Eat a healthy, nutritious diet: Eyes need a good amount of Omega-3 fatty acids, vitamin C, and vitamin E. Eat plenty of green leafy vegetables, berries, citrus fruits, nuts, seeds, and fish.</p>
+        <p>Monitor your blood pressure and blood sugar levels: Check your blood pressure and diabetes, as elevated blood pressure or sugar can affect eyesight.</p>
+        <p>Avoid straining your eyes: Do not overstrain your eyes. Have enough lighting while reading. Practice eye exercises that relax the eye muscles and strengthen them. Avoid more screen time and take more breaks while working on the computer.</p>
+        <p>Wear sunglasses for light sensitivity: The harmful UV radiations of the sun can damage the eyes. Sunglasses help protect the eyes when out in the sun.</p>
+        <p>Have an annual ophthalmological visit: Make sure to update your eye prescriptions and regularly get an eye check.</p>`,
+        ears: `<p>Loss of hearing is a common issue among the elderly. Here are ways to keep your ears away from hearing loss problems:</p>
+        <p>Protect the ears from loud noises: Hearing loss damages can be irreparable. Protect your ears from loud sounds with ear plugs. Also, keep the volumes low while watching TV or listening to music.</p>
+        <p>Lessen the background sounds: Minimise the unnecessary background sounds, like switching off the television when not watching it, avoiding noisy and crowded places, etc.</p>
+        <p>Visit an ENT specialist for any hearing problem: If you are experiencing any hearing issues, visit the ENT specialist. Hearing devices for specific or partial hearing loss can minimise ear strain and help in effective hearing.</p>`,
+        nose: `<p>Maintain nasal hygiene by keeping your nose clean, using humidifiers in dry environments, and avoiding exposure to pollutants.</p>
+        <p>Avoid strong irritants like smoke, dust, and harsh chemicals to protect your nasal passages.</p>
+        <p>Stay hydrated to keep your nasal passages moist and reduce irritation.</p>`,
+        skin: `<p>Changes in the skin, particularly ageing, can decrease sensitivity. Here are some ways to take care of the skin:</p>
+        <p>Keep yourself physically active: Issues with blood circulation can cause loss of touch. Physical activities like running, walking, swimming, and exercising can aid blood circulation.</p>
+        <p>Maintain healthy skin hygiene: Take care of your skin and skin problems by having a bath every day and using good-quality creams and lotions. Hydrate your skin with plenty of water intake and use sunblock when venturing out in the sun.</p>
+        <p>Have a healthy diet: A well-balanced diet can fuel your nerves and brain and keep your skin healthy.</p>`,
+        tongue: `<p>Maintain oral hygiene by brushing your teeth twice a day, cleaning your tongue, and visiting the dentist regularly.</p>
+        <p>Stay hydrated to keep your mouth clean and prevent bacteria buildup on the tongue.</p>
+        <p>Avoid smoking and limit alcohol consumption to prevent tongue-related issues.</p>`
+      };
+      document.getElementById('tipContent').innerHTML = `<h2>${organ.charAt(0).toUpperCase() + organ.slice(1)} Care Tips</h2>${tips[organ]}`;
+    }
+  </script>
+</body>
+</html>
